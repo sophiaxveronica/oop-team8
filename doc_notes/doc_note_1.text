@@ -1,0 +1,58 @@
+{
+  "patient_info": {
+    "name": "John Doe",
+    "age": 76,
+    "chronic_conditions": ["Hypertension", "Type 2 Diabetes", "Chronic Kidney Disease"],
+    "social_determinants": "Lives alone, moderate physical activity, adheres to dietary restrictions"
+  },
+  "notes": [
+    {
+      "date": “January 15, 2024”,
+      "subjective": "Patient reports continued fatigue and occasional dizziness. He notes that blood sugar levels are still fluctuating, although somewhat less than before. He has not yet had the recommended eye exam or followed up with the dietitian.",
+      "objective": {
+        "BP": "148/90 mmHg",
+        "HR": "80 bpm",
+        "weight": "179 lbs",
+        "height": "5'10\"",
+        "HbA1c": "7.3%",
+        "serum_creatinine": "1.7 mg/dL",
+        "GFR": "46 mL/min",
+        "total_cholesterol": "195 mg/dL",
+        "LDL": "118 mg/dL",
+        "HDL": "42 mg/dL",
+        "triglycerides": "158 mg/dL",
+        "physical_exam": "Mild pedal edema, no jugular venous distension, normal heart and lung sounds."
+      },
+      "assessment": {
+        "hypertension": "Blood pressure remains elevated but slightly improved from the previous visit. Medication adjustment may need further tweaking.",
+        "type_2_diabetes": "Glycemic control has slightly improved but remains suboptimal. HbA1c is down to 7.3% from 7.5%.",
+        "chronic_kidney_disease_stage_3": "Stable with a slight improvement in renal function (GFR 46 mL/min). Continued monitoring is required.",
+        "hyperlipidemia": "Cholesterol levels are slightly improved but still not within target range, which continues to increase cardiovascular risk.",
+        "general_health": "Persistent fatigue and dizziness suggest that chronic conditions are not fully controlled. Non-completion of some recommended actions from the last visit may contribute to ongoing symptoms."
+      },
+      "plan": {
+        "medications": [
+          "Continue current dose of Lisinopril at 20 mg daily.",
+          "Maintain Metformin dosage at 1000 mg twice daily and Sitagliptin 100 mg daily.",
+          "Continue Atorvastatin 10 mg daily."
+        ],
+        "lifestyle_modifications": [
+          "Re-emphasize the importance of a low-sodium, low-protein diet. Strongly recommend scheduling a dietitian appointment.",
+          "Encourage regular physical activity, aiming for at least 30 minutes of moderate exercise most days of the week.",
+          "Advise patient to continue monitoring blood pressure and blood glucose levels at home and maintain a log."
+        ],
+        "monitoring_and_follow_up": [
+          "Order renal function tests (Serum Creatinine, GFR) and electrolyte panel in 1 month to monitor kidney function.",
+          "Schedule a follow-up appointment in 3 months to reassess blood pressure, diabetes management, and kidney function.",
+          "Arrange for an eye exam to screen for diabetic retinopathy as this has not been done yet.",
+          "Order an EKG to assess for any cardiac involvement given ongoing symptoms of dizziness and long-standing hypertension."
+        ],
+        "patient_education": [
+          "Discuss potential side effects of new medications and reinforce the importance of adherence to the medication regimen.",
+          "Educate on recognizing symptoms of hypoglycemia and hyperglycemia and appropriate actions to take.",
+          "Reiterate the importance of regular follow-up and monitoring to manage chronic conditions effectively."
+        ]
+      }
+    }
+  ]
+}
