@@ -14,9 +14,11 @@ to see how they have been doing since their last visit, order the questions by i
 The most important questions are those that relate to medication changes, lab orders that 
 should have been completed, and referrals. Return the three most important questions. Add one
 more question asking if there have been any significant health updates since the last visit. 
-Return only the questions as a list of strings: `;
+Return only the 4 questions as a list of strings: `;
 
-const openAIClient = new OpenAI();
+const openai = new OpenAI({
+    apiKey: 'sk-proj-lSxo4kD4VJoPyFMyAxLTT3BlbkFJ1shOztaaX5XuLGjWJuJ1', // Replace with your actual OpenAI API key
+  });
 
 export async function get_questions(verbose=false) {
     const doctors_note_file = "doc_notes/doc_note_1.text";
@@ -25,20 +27,20 @@ export async function get_questions(verbose=false) {
     const questions_list = await getAIResponse(step_2+notes_summary);
     const questions_top = await getAIResponse(step_3+questions_list);
 
-    if (verbose) {
-        console.log("Step 1: ", step_1)
-        console.log("Response: ", notes_summary, "\n");
-        console.log("Step 2: ", step_2)
-        console.log("Response: ", questions_list, "\n");
-        console.log("Step 3: ", step_3)
-        console.log("Response: ", questions_top, "\n");
-    }
+    // if (verbose) {
+    //     console.log("Step 1: ", step_1)
+    //     console.log("Response: ", notes_summary, "\n");
+    //     console.log("Step 2: ", step_2)
+    //     console.log("Response: ", questions_list, "\n");
+    //     console.log("Step 3: ", step_3)
+    //     console.log("Response: ", questions_top, "\n");
+    // }
 
     return questions_top;
 }
 
 async function getAIResponse(prompt) {
-    const response = await openAIClient.chat.completions.create({
+    const response = await openai.chat.completions.create({
         messages: [{ role: "system", content: "You are a hospital administrator" },
                 { role: "user", content: prompt }
         ],
