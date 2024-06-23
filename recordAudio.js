@@ -1,5 +1,6 @@
 import record from 'node-record-lpcm16';
 import wav from 'wav';
+import keypress from 'keypress';
 
 const CHANNELS = 1;
 const RATE = 16000;
@@ -8,9 +9,11 @@ const SILENCE_LIMIT = .5; // in seconds
 
 let silentChunks = 0;
 let frames = [];
+let stopRecording = false;
+
 
 function isSilent(buffer) {
-  let silenceThreshold = 2000; // Adjust as needed
+  let silenceThreshold = 2500; // Adjust as needed
   let silent = true;
   for (let i = 0; i < buffer.length; i += 2) {
     let sample = buffer.readInt16LE(i);
@@ -65,4 +68,19 @@ const mic = record
     resolve('File successfully written');
   });
 })};
+
+keypress(process.stdin);
+
+process.stdin.on('keypress', function (ch, key) {
+  if (key && key.name === 'space') {
+    console.log('Space bar pressed, stopping recording.');
+    stopRecording = true;
+  }
+  if (key && key.ctrl && key.name === 'c') {
+    process.exit();
+  }
+});
+
+process.stdin.setRawMode(true);
+process.stdin.resume();
   
