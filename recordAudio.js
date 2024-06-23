@@ -4,7 +4,7 @@ import wav from 'wav';
 const CHANNELS = 1;
 const RATE = 16000;
 const CHUNK = 1024;
-const SILENCE_LIMIT = 1; // in seconds
+const SILENCE_LIMIT = .5; // in seconds
 
 let silentChunks = 0;
 let frames = [];
@@ -38,7 +38,7 @@ const mic = record
   .record({
     sampleRate: RATE,
     threshold: 0,
-    silence: '1.0',
+    silence: '.5',
     device: null,
     recordProgram: 'rec', // or 'arecord'
     endOnSilence: false

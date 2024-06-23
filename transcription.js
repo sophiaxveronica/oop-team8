@@ -13,8 +13,7 @@ export async function transcribeAudio(audioFilePath) {
         model: 'whisper-1', // Adjust model name as needed
         file: fs.createReadStream(audioFilePath),
       });
-  
-      console.log('Transcription:', transcription.text);
+    //   console.log('Transcription:', transcription.text);
       return transcription.text;
     } catch (error) {
       console.error('Error transcribing audio:', error);
