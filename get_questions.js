@@ -12,12 +12,12 @@ to see how they have been doing. Only return the questions. Here is the summary:
 const step_3 = `Given a list of questions to ask a doctor's patient 
 to see how they have been doing since their last visit, order the questions by importance.
 The most important questions are those that relate to medication changes, lab orders that 
-should have been completed, and referrals. Return the 3 most important questions. Add one
+should have been completed, and referrals. Return the 2 most important questions. Add one
 more question asking if there have been any significant health updates since the last visit. 
-Return only the 4 questions as a list of strings, do not use the numbers: `;
+Return only the 3 questions as an array of strings, do not use the numbers: `;
 
 const openai = new OpenAI({
-    apiKey: 'sk-proj-lSxo4kD4VJoPyFMyAxLTT3BlbkFJ1shOztaaX5XuLGjWJuJ1', // Replace with your actual OpenAI API key
+    apiKey: 'key', // Replace with your actual OpenAI API key
   });
 
 export async function get_questions(verbose=false) {

@@ -2,7 +2,7 @@ import fs from 'fs';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-    apiKey: 'sk-proj-gEV3MhKwLgTDS0maBTwST3BlbkFJpOFcHCebRyixF2Q5IbFC', // Replace with your actual OpenAI API key
+    apiKey: 'key', // Replace with your actual OpenAI API key
   });
 
 // Function to perform audio transcription
