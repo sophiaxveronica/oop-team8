@@ -71,15 +71,6 @@ const mic = record
 
 keypress(process.stdin);
 
-process.stdin.on('keypress', function (ch, key) {
-  if (key && key.name === 'space') {
-    console.log('Space bar pressed, stopping recording.');
-    stopRecording = true;
-  }
-  if (key && key.ctrl && key.name === 'c') {
-    process.exit();
-  }
-});
 
 process.stdin.setRawMode(true);
 process.stdin.resume();

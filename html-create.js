@@ -1,11 +1,5 @@
-import fs from 'fs';
-
-const summary = "THIS IS A TEST"
-const list_questions = ["Test","How are you feeling since your last appointment?", "Have you experienced any side effects from the medication?", "Are you able to perform your daily activities without discomfort?", "Do you have any concerns or questions about your treatment?"]
-const conversation = "Person1: Hello there Person2: Hi how are you Person1: I have to chat Person2: Sure lets chat";
-
 // generate html view given summary, list of questions and conversation
-function generateHtml(summary, list_questions, conversation) {
+export function generateHtml(summary, list_questions, conversation) {
 
     const output = `
     <!DOCTYPE html>
@@ -13,7 +7,7 @@ function generateHtml(summary, list_questions, conversation) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Patient Follow-up Summary</title>
+        <title>Charty.ai Patient Follow-up Summary</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -46,7 +40,8 @@ function generateHtml(summary, list_questions, conversation) {
                 padding-left: 20px;
             }
             .section ul li {
-                list-style-type: disc;
+                list-style-type: none;
+                list-style: none;
             }
             button {
                 padding: 10px 20px;
@@ -72,7 +67,7 @@ function generateHtml(summary, list_questions, conversation) {
     <body>
 
         <div class="container">
-            <h1>Patient Follow-up Summary</h1>
+            <h1>Charty.ai Patient Follow-up Summary</h1>
 
             <div class="section">
                 <h2>Summary of Most Recent Phone Call</h2>
@@ -88,15 +83,10 @@ function generateHtml(summary, list_questions, conversation) {
 
             <div class="section">
                 <button id="button1">View Call Transcription</button>
-                <button id="button2">View Full SOAP</button>
                 
                 <div id="text1" class="hidden">
                     <h2>Transcription</h2>
                     ${formatConversation(conversation)}
-                </div>
-                <div id="text2" class="hidden">
-                    <h2>SOAP</h2>
-                    This is the first text section.
                 </div>
             </div>
 
@@ -142,25 +132,17 @@ function generateHtml(summary, list_questions, conversation) {
 
 // format a list of strings as a list of html bullet points
 function formatList(list) {
+    list = list.split('\n')
     return list.map(item => `<li>${item}</li>`).join('');
 }
 
 function formatConversation(conversation) {
-    const lines = conversation.split(/(Person1:|Person2:)/).filter(line => line.trim() !== '');
+    const lines = conversation.split('so far:')[1].split(/(Helen:|Patient:)/).filter(line => line.trim() !== '');
     const formattedConversation = lines.map(line => {
-      if (line.startsWith('Person1:') || line.startsWith('Person2:')) {
+      if (line.startsWith('Helen:') || line.startsWith('Patient:')) {
         return `<strong>${line.trim()}</strong>`;
       }
       return line.trim();
     }).join('<br>');
     return formattedConversation;
   }
-
-// save the html as a file
-fs.writeFileSync('patientSummary.html', generateHtml(summary, list_questions, conversation));
-
-console.log("Patient summary saved to patientSummary.html")
-
-// use node exec to run the command to open the file in the browser
-import { exec } from 'child_process';
-exec(`open patientSummary.html`);
